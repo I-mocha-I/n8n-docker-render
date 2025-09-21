@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: n8n-docker
+    env: docker
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: N8N_HOST
+        value: 0.0.0.0
+      - key: N8N_PORT
+        value: 10000
+      - key: N8N_PROTOCOL
+        value: https
+      - key: N8N_BASIC_AUTH_ACTIVE
+        value: true
+      - key: N8N_BASIC_AUTH_USER
+        value: admin
+      - key: N8N_BASIC_AUTH_PASSWORD
+        generateValue: true
+      - key: WEBHOOK_URL
+        value: ${RENDER_EXTERNAL_URL}
+      - key: N8N_USER_FOLDER
+        value: /home/node/.n8n
+

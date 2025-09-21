@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  n8n:
+    build: .  # Use your custom Dockerfile
+    ports:
+      - "10000:10000"  # Same port as Render - no confusion!
+    environment:
+      - N8N_HOST=0.0.0.0
+      - N8N_PORT=10000  # Same port everywhere
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=admin
+      - N8N_BASIC_AUTH_PASSWORD=password123
+      - WEBHOOK_URL=http://localhost:10000/
+    volumes:
+      - n8n_data:/home/node/.n8n  # n8n official image uses this path
+    restart: unless-stopped
+
+volumes:
+  n8n_data:
