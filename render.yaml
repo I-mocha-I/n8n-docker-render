@@ -18,7 +18,7 @@ services:
       - key: N8N_BASIC_AUTH_PASSWORD
         generateValue: true
       - key: WEBHOOK_URL
-        value: ${RENDER_EXTERNAL_URL}
+        value: https://n8n-docker-render.onrender.com/webhook/
       - key: N8N_USER_FOLDER
         value: /home/node/.n8n
 
